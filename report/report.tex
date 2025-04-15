@@ -1,0 +1,226 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\geometry{a4paper, margin=1in}
+
+\title{Password-less Authentication System for Mobile Banking Apps}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+\subsection*{Overview}
+In today’s digital landscape, the increasing sophistication of cyberattacks has rendered traditional password-based authentication methods insufficient. Banking applications are high-value targets for malicious actors who exploit weak or reused passwords using phishing, brute force, or credential stuffing attacks. To address these vulnerabilities, our project introduces a secure, password-less authentication system designed specifically for mobile banking apps.
+
+\subsection*{Motivation}
+Passwords are not only a security risk but also a burden for user experience. Users often forget them, reuse them across platforms, or fall victim to phishing schemes. These limitations call for a new approach—one that eliminates passwords entirely while maintaining or even enhancing security. Our goal is to build a system that users trust, enjoy using, and that financial institutions can confidently adopt.
+
+\subsection*{Our Solution}
+We propose a multi-factor, password-less authentication mechanism powered by a BBKey hardware token, backed by biometrics and OTPs as secondary methods. The BBKey acts as a physical authenticator, offering the highest level of security through cryptographic key pairs stored securely on a tamper-resistant chip. Authentication is quick, intuitive, and seamless—requiring just a tap or a plug-in action.
+
+\subsection*{Key Objectives}
+Our solution is designed with the following core objectives:
+\begin{itemize}
+    \item \textbf{Security:} Eliminate passwords and use cryptographic hardware (BBKey) to prevent phishing and unauthorized access.
+    \item \textbf{User Experience:} Provide a frictionless, intuitive login experience with fast biometric fallback and OTP options.
+    \item \textbf{Scalability:} Ensure the system can support thousands of concurrent users without compromising speed or reliability.
+    \item \textbf{Compliance:} Adhere to local and international data protection regulations like PDPL and GDPR.
+\end{itemize}
+
+\section*{Authentication Techniques Chosen}
+
+\subsection*{Primary Method: BBKey (Hardware Token)}
+Our primary method of authentication is the BBKey, a secure hardware token that uses public key cryptography (FIDO2/WebAuthn) to authenticate users without passwords. Each BBKey device stores a private key securely and generates a unique cryptographic signature during login, which is verified by the server using the corresponding public key.
+
+\subsubsection*{Key Features}
+\begin{itemize}
+    \item \textbf{Tamper-proof:} Resistant to cloning and extraction.
+    \item \textbf{Phishing-proof:} Not vulnerable to fake websites or man-in-the-middle attacks.
+    \item \textbf{Portable:} Can be carried and used across devices.
+\end{itemize}
+
+\subsubsection*{How it Works}
+\begin{itemize}
+    \item Stores a private key securely inside tamper-proof hardware.
+    \item Generates a unique cryptographic signature during login.
+    \item Verifies the user by matching the signature with the public key on the server.
+\end{itemize}
+
+\section*{Recovery Options for BBKey Loss}
+
+\subsection*{First Recovery Method: Magic Link Authentication}
+As an immediate backup, the app supports magic link authentication via the user’s registered email address.
+
+\subsubsection*{How It Works}
+\begin{enumerate}
+    \item The user taps “Lost your BBKey?” on the login screen.
+    \item A secure, time-limited magic link is sent to their verified email address.
+    \item Clicking the link automatically authenticates the user and grants access to their account.
+    \item The link expires after a short duration or after a single use.
+\end{enumerate}
+
+\subsubsection*{Security Features}
+\begin{itemize}
+    \item Magic links are cryptographically signed and time-bound.
+    \item Only deliverable to the user’s verified email address.
+    \item Device fingerprinting and IP validation can be used to detect suspicious activity.
+    \item Optionally, the system may require OTP or additional verification for high-risk actions post-login.
+\end{itemize}
+
+\subsection*{Second Recovery Method: One-Time Use Passwords (Provided by Bank)}
+As a more robust recovery mechanism, each user is issued a set of 10 one-time-use passwords (OTPs) during registration or upon request.
+
+\subsubsection*{How It Works}
+\begin{enumerate}
+    \item Users receive 10 unique codes, delivered digitally or as a printed secure sheet.
+    \item When BBKey is unavailable, the user can log in using any unused OTP.
+    \item After a code is used, it becomes invalid and marked as used.
+    \item When the list is exhausted, the app prompts the user to request a new set from the bank.
+\end{enumerate}
+
+\subsubsection*{Security Features}
+\begin{itemize}
+    \item OTPs are tied to the user and device.
+    \item Codes are hashed and securely stored on the backend.
+    \item Real-time notifications are sent when an OTP is used.
+\end{itemize}
+
+\section*{User Sign-Up \& Registration Flow}
+
+\subsection*{Step 1: Enter Personal Information}
+The user begins by filling in essential details required for account creation and identity verification:
+\begin{itemize}
+    \item Phone Number
+    \item Email
+    \item Location
+    \item Home Address
+    \item Government-issued ID Verification:
+    \begin{itemize}
+        \item Upload a front and back photo of their ID card or passport.
+        \item Perform a live selfie or short video for face matching.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Step 2: Select BBKey Package}
+Once identity verification is complete, the user moves to BBKey selection:
+\begin{itemize}
+    \item Choose the number of BBKeys (e.g., 1 for personal, 2 for backup).
+    \item Select features (e.g., USB-C, NFC, Bluetooth-enabled BBKey).
+    \item Confirm order and shipping details.
+\end{itemize}
+
+\subsection*{Step 3: Track BBKey Delivery}
+The user gets a real-time delivery tracking interface. Estimated delivery time is within 1 hour. Notifications are sent when the BBKey is out for delivery and once delivered.
+
+\subsection*{Step 4: Activate BBKey}
+Once received:
+\begin{itemize}
+    \item The app guides the user to insert or tap the BBKey.
+    \item The user enters the PIN for the BBKey.
+    \item A one-time registration key from the BBKey is validated on the server.
+    \item The device is then paired and marked as trusted.
+\end{itemize}
+
+\subsection*{Step 5: Choose Alternative Access Method}
+To ensure accessibility in case of BBKey failure, the user is prompted to choose at least one fallback method:
+\begin{itemize}
+    \item Magic Link Authentication.
+    \item 10 One-Time Backup Codes (delivered securely).
+    \item Trusted Device Push Notification (optional).
+\end{itemize}
+
+\section*{Authentication Flow – Mobile App Login Process}
+
+\subsection*{Step 1: User Opens the App}
+The user taps “Login” on the mobile banking app.
+
+\subsection*{Step 2: Primary Method – BBKey Authentication}
+\begin{itemize}
+    \item The app prompts the user to insert or tap their BBKey.
+    \item BBKey generates a signed cryptographic challenge and sends it to the server.
+    \item If valid, the server returns a session token (e.g., JWT), and the user is logged in securely.
+    \item If BBKey is unavailable or fails, the user is redirected to a secure fallback options screen.
+\end{itemize}
+
+\subsection*{Step 3: Fallback Authentication Options}
+\begin{itemize}
+    \item \textbf{Option A: Magic Link Authentication.}
+    \item \textbf{Option B: One-Time Backup Code.}
+\end{itemize}
+
+\section*{BBKey Protocols Explained}
+The BBKey is a small security device used to protect accounts using multiple authentication technologies such as FIDO2, PIV, OTP, and OpenPGP. This section explains the protocols supported by BBKey and how each one works.
+
+\subsection*{FIDO2 / WebAuthn Protocol}
+\begin{itemize}
+    \item Used for passwordless login.
+    \item A key pair (public and private) is generated inside the BBKey.
+    \item The private key never leaves the device.
+    \item The public key is used by websites to verify the login.
+\end{itemize}
+
+\subsection*{U2F Protocol (Universal 2nd Factor)}
+\begin{itemize}
+    \item Used alongside a password for added security.
+    \item BBKey signs a challenge + domain combination.
+    \item No additional software is required; works directly with the browser.
+\end{itemize}
+
+\subsection*{OTP Protocol (One-Time Password)}
+\begin{itemize}
+    \item BBKey generates temporary login codes.
+    \item Two types: TOTP (time-based) and BBKey OTP (proprietary).
+    \item Used with services that do not support FIDO2.
+\end{itemize}
+
+\subsection*{PIV Protocol (Personal Identity Verification)}
+\begin{itemize}
+    \item Used in enterprise environments for login and digital signing.
+    \item Supports multiple slots like 9a for authentication, 9c for signing, and f9 for key attestation.
+    \item Compatible with systems like Windows and macOS.
+\end{itemize}
+
+\subsection*{OpenPGP Protocol}
+\begin{itemize}
+    \item Used to sign messages and encrypt emails.
+    \item BBKey holds the private key and signs internally.
+    \item Ideal for developers and security-conscious users.
+\end{itemize}
+
+
+\section*{Cost}
+Implementing the proposed password-less authentication system involves the following cost considerations:
+
+\subsection*{Hardware Costs}
+\begin{itemize}
+    \item \textbf{BBKey Devices:} Estimated cost per device ranges from \$20 to \$50, depending on features (e.g., NFC, Bluetooth).
+    \item \textbf{Backup BBKeys:} Optional additional devices for users who opt for backups.
+\end{itemize}
+
+\subsection*{Development Costs}
+\begin{itemize}
+    \item \textbf{Software Development:} Includes integration of FIDO2/WebAuthn protocols, fallback mechanisms, and user interface design.
+    \item \textbf{Backend Infrastructure:} Secure storage for public keys, OTPs, and compliance with data protection regulations.
+\end{itemize}
+
+\subsection*{Operational Costs}
+\begin{itemize}
+    \item \textbf{Customer Support:} Handling BBKey delivery, activation issues, and recovery requests.
+    \item \textbf{Maintenance:} Regular updates to ensure compatibility with evolving security standards.
+\end{itemize}
+
+\subsection*{Total Cost Estimate}
+The total cost will vary based on the scale of deployment, number of users, and selected features. A detailed cost analysis can be conducted during the project planning phase.
+
+\section*{Conclusion}
+In our proposed authentication system, we prioritize both security and user convenience by intelligently adapting the level of authentication required based on transaction risk. By introducing pre-set conditions that determine when the primary authentication method (BBKey) is necessary, we minimize friction for low-risk actions while maintaining robust protection for high-risk scenarios.
+
+\end{document}

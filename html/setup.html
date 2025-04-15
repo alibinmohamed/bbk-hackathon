@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set Up Your BBK-SK</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #5f42a3;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #6f50c7;
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    ol {
+      margin-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      padding: 0.75rem;
+      border-radius: 12px;
+      border: none;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      background-color: #f5f4fc;
+      color: #5f42a3;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #5f42a3;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 0.75rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e4e2fb;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .nav-buttons button {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><i class="fas fa-key"></i> Set Up Your BBK-SK</h2>
+    <p>Follow the instructions below to configure your BBK Security Key:</p>
+    <ol>
+      <li>Select a secure PIN for your key.</li>
+      <li>Plug in your key (USB) or place it near your device (NFC).</li>
+    </ol>
+    <form onsubmit="event.preventDefault(); alert('Security Key setup completed successfully!');">
+      <label for="pin">Choose a PIN</label>
+      <input type="password" id="pin" placeholder="4 to 8 digit PIN" minlength="4" maxlength="8" required>
+      <button type="submit">Set Up Key</button>
+    </form>
+    <div class="nav-buttons">
+      <button onclick="location.href='track-order.html'"><i class="fas fa-box"></i> Track Order</button>
+      <button onclick="location.href='home.html'"><i class="fas fa-home"></i> Home</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Your Order</title>
+  <link rel="stylesheet" href="Css/home.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✺</span>
+        <a class="logo-text" href="home.html">BBK</a>
+      </div>
+      <div class="user-info">
+        <span>Welcome to BBK</span>
+        <button class="btn logout">Logout</button>
+      </div>
+    </header>
+
+    <main class="main-section">
+      <h1>Track Your Order</h1>
+
+      <div class="order-details">
+        <p><strong>Order ID:</strong> <span class="value">#123456</span></p>
+        <p><strong>Key Type:</strong> <span class="value">USB-C</span></p>
+        <p><strong>Features:</strong> <span class="value">FIDO2, OTP</span></p>
+        <p><strong>Quantity:</strong> <span class="value">2</span></p>
+        <p><strong>Estimated Delivery:</strong> <span class="value">Within 1 hour</span></p>
+      </div>
+      
+      <div class="status pending">
+        <p><strong>Order Status:</strong> <span class="value">Pending</span></p>
+      </div>
+      
+      <div class="button-group">
+        <button class="btn action" onclick="location.href='security-key.html'">Back to Key Selection</button>
+        <button class="btn action" onclick="location.href='setup.html'">Set Up BBK-SK</button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

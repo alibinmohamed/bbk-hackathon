@@ -1,0 +1,132 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #5f42a3;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Container */
+  .container {
+    background: #5f42a3;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    color: #5f42a3;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .logo-icon {
+    font-size: 1.6rem;
+    margin-right: 0.4rem;
+  }
+  
+  .auth-buttons .btn {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .login {
+    background: #e5e4f7;
+    color: #5f42a3;
+  }
+  
+  .signup {
+    background: #7a5cf4;
+    color: #fff;
+  }
+  
+  /* Main Section */
+  .main-section {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .main-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .main-section p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 2rem;
+  }
+  
+  /* Form Styling */
+  .key-form {
+    background-color: #f5f4fc;
+    color: #5f42a3;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  select,
+  input[type="number"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+  
+  .key-form .btn.signup {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #7a5cf4;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .key-form .btn.signup:hover {
+    background: #6b4be0;
+  }
+  

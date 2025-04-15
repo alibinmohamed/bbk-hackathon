@@ -1,0 +1,325 @@
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5f42a3; /* subtle light background */
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  } 
+
+  .signup-form {
+    margin-top: 2rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    color: #3c347c; /* deep indigo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .signup-form label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #3c347c;
+  }
+  
+  .signup-form input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #d3d3e7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+  
+  .signup-form input:focus {
+    border-color: #7a5cf4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(122, 92, 244, 0.2);
+  }
+  
+  .signup-form .btn.signup {
+    align-self: flex-end;
+    margin-top: 1rem;
+    background: #7a5cf4;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .signup-form .btn.signup:hover {
+    background: #5a44c7;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+
+  /* === Logo Styling === */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.6rem; /* increased text size */
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 1rem 2rem;
+}
+
+.logo-icon {
+  font-size: 2rem; /* larger symbol */
+  color: rgb(0, 0, 0);
+}
+
+.logo-text {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.8rem; /* bigger BBK text */
+}
+
+/* === Title & Subtitle Styling === */
+.main-section h1 {
+  color: white;
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.main-section p {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(60, 52, 124, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: #3c347c;
+  margin-bottom: 1rem;
+}
+
+.modal-content input {
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d3d3e7;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-actions .btn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #7a5cf4;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.modal-actions .btn:hover {
+  background-color: #5a44c7;
+}
+
+.modal-actions .btn.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal-actions .btn.cancel:hover {
+  background-color: #aaa;
+}
+
+/* === Photo Upload Step === */
+#photo-step {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(60, 52, 124, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#photo-step.hidden {
+  display: none;
+}
+
+#photo-step .photo-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#photo-step h2 {
+  font-size: 1.2rem;
+  color: #3c347c;
+  margin-bottom: 1rem;
+}
+
+#photo-step input[type="file"] {
+  display: none;
+}
+
+#photo-status {
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: #3c347c;
+}
+
+#open-camera {
+  background-color: #7a5cf4;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+#open-camera:hover {
+  background-color: #5a44c7;
+}
+
+#continue-to-otb {
+  background-color: #7a5cf4;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#continue-to-otb:disabled {
+  background-color: #b5aaf3;
+  cursor: not-allowed;
+}
+
+#camera {
+  border: 2px solid #7a5cf4;
+  border-radius: 12px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #f5f4fc;
+  color: #5f42a3;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.recovery-list {
+  text-align: left;
+  font-family: monospace;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  color: #000;
+}
+
+.modal .btn {
+  margin-top: 1.5rem;
+  background-color: #7a5cf4;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.signup-form select {
+  padding: 0.8rem 1rem;
+  border: 1px solid #d3d3e7;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  background-color: #fff;
+}
+
+.signup-form select:focus {
+  border-color: #7a5cf4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(122, 92, 244, 0.2);
+}

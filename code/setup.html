@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Set Up Your BBK-SK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #080710;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.13);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        }
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        input {
+            height: 40px;
+            margin-top: 5px;
+            padding: 0 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.07);
+            color: #ffffff;
+        }
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #080710;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Set Up Your BBK-SK</h2>
+        <p>Follow the instructions below to set up your BBK Security Key:</p>
+        <ol>
+            <li>Select a secure PIN for your key.</li>
+            <li>Plug in your security key (if USB) or move it closer to your device (if NFC).</li>
+        </ol>
+        <form>
+            <label for="pin">Enter a PIN for Your Key</label>
+            <input type="password" id="pin" placeholder="Enter a 4-8 digit PIN" minlength="4" maxlength="8" required>
+            
+            <button type="submit">Set Up Key</button>
+        </form>
+        <button onclick="location.href='track-order.html'">Back to Track Order</button>
+        <button onclick="location.href='index.html'">Back to Home</button>
+    </div>
+</body>
+</html>

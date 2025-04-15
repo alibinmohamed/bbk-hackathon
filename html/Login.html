@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - BBK Security Key</title>
+  <link rel="stylesheet" href="Css/Regestration.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✺</span>
+        <a class="logo-text" href="index.html">BBK</a>
+      </div>
+    </header>
+
+    <main class="main-section">
+      <h1>Login to Your Account</h1>
+      <p>Please enter your credentials to access your account</p>
+
+      <form class="signup-form" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-type">Choose Your Login Method</label>
+          <select id="login-type" required>
+            <option value="" disabled selected>Select your login method</option>
+            <option value="bbsk">BBK Security Key (BBSK)</option>
+            <option value="biometric">Biometric</option>
+            <option value="pin">PIN</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="security-key-group" style="display: none;">
+          <label for="security-key">Enter Your PIN or Security Key</label>
+          <input type="text" id="security-key" placeholder="Enter your PIN or Security Key">
+        </div>
+
+        <button type="submit" class="btn signup">Login</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    const loginTypeSelect = document.getElementById('login-type');
+    const securityKeyGroup = document.getElementById('security-key-group');
+    const securityKeyInput = document.getElementById('security-key');
+
+    loginTypeSelect.addEventListener('change', () => {
+      const selected = loginTypeSelect.value;
+      if (selected === 'bbsk' || selected === 'pin') {
+        securityKeyGroup.style.display = 'block';
+        securityKeyInput.setAttribute('required', 'required');
+      } else {
+        securityKeyGroup.style.display = 'none';
+        securityKeyInput.removeAttribute('required');
+      }
+    });
+
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value.trim();
+      const loginType = loginTypeSelect.value;
+      const securityKey = securityKeyInput.value.trim();
+
+      if (!email || !loginType || ((loginType === 'bbsk' || loginType === 'pin') && !securityKey)) {
+        alert('Please fill in all required fields.');
+        return false;
+      }
+
+      // Simulate successful login
+      window.location.href = 'home.html';
+      return true;
+    }
+  </script>
+</body>
+</html>

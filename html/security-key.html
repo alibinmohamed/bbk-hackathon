@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Security Key - BBK</title>
+  <link rel="stylesheet" href="Css/security-key.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✺</span>
+        <a class="logo-text" style="text-decoration: none;" href="index.html">BBK</a>
+      </div>
+    </header>
+
+    <main class="main-section">
+      <h1>Order Your BBK Security Key</h1>
+      <p>Select your preferences to enhance your account protection</p>
+
+      <form class="key-form">
+        <div class="form-group">
+          <label for="key-type">Key Type</label>
+          <select id="key-type" required>
+            <option value="">-- Select Type --</option>
+            <option value="usb-a">USB-A</option>
+            <option value="usb-c">USB-C</option>
+            <option value="nfc">NFC</option>
+            <option value="bluetooth">Bluetooth</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="features">Key Features</label>
+          <select id="features" required>
+            <option value="">-- Select Features --</option>
+            <option value="fido2">FIDO2</option>
+            <option value="otp">OTP</option>
+            <option value="totp">TOTP</option>
+            <option value="smart-card">Smart Card</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="count">Quantity</label>
+          <input type="number" id="count" min="1" max="10" placeholder="Enter quantity" required />
+        </div>
+
+        <button type="submit" class="btn signup" onclick="window.location.href='home.html'">Order Key</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
