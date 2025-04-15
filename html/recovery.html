@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Set Up Recovery Method - BBK</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #152a53;
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 150px;
+      height: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 1.5rem;
+      color: #80bfff;
+    }
+
+    .card {
+      background-color: #1d335c;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card:hover {
+      background-color: #264a7c;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #d0d0d0;
+    }
+
+    .btn {
+      background-color: #3a6ae0;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #598bf7;
+    }
+
+    .selected {
+      border: 2px solid #80bfff;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup {
+      background-color: #1d335c;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      color: white;
+    }
+
+    .popup h3 {
+      margin-bottom: 1rem;
+      color: #80bfff;
+    }
+
+    .popup input,
+    .popup ul {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .popup input {
+      padding: 0.75rem;
+      border-radius: 10px;
+      background-color: #2a4570;
+      color: white;
+      border: none;
+    }
+
+    .popup input::placeholder {
+      color: #b0c4de;
+    }
+
+    .popup ul {
+      text-align: left;
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    .popup ul li {
+      margin-bottom: 0.5rem;
+      font-family: monospace;
+      font-size: 0.95rem;
+    }
+
+    .popup button {
+      width: 100%;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="bbkklogo.png" alt="BBK Logo">
+      </div>
+    </div>
+
+    <h2>Set up your Recovery Method</h2>
+
+    <div class="card" onclick="selectMethod('magic')" id="card-magic">
+      <h3>Secure Magic Links</h3>
+      <p>Receiving a link to your mail after answering the security question</p>
+    </div>
+
+    <div class="card" onclick="selectMethod('codes')" id="card-codes">
+      <h3>Recovery Codes</h3>
+      <p>10 one-time recovery codes that will be used one time only</p>
+    </div>
+
+    <button class="btn" onclick="continueToNext()">Continue</button>
+  </div>
+
+  <!-- Magic Link Email Popup -->
+  <div class="popup-overlay" id="emailPopup">
+    <div class="popup">
+      <button class="close-btn" onclick="closePopup('emailPopup')">&times;</button>
+      <h3>Enter your email</h3>
+      <input type="email" id="recoveryEmail" placeholder="e.g. you@email.com" required />
+      <button class="btn" onclick="sendLink()">Send</button>
+    </div>
+  </div>
+
+  <!-- Recovery Codes Popup -->
+  <div class="popup-overlay" id="codesPopup">
+    <div class="popup">
+      <button class="close-btn" onclick="closePopup('codesPopup')">&times;</button>
+      <h3>Your Recovery Codes</h3>
+      <ul id="codesList"></ul>
+      <button class="btn" onclick="window.location.href='home.html'">OK</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedMethod = 'magic';
+
+    function selectMethod(method) {
+      selectedMethod = method;
+      document.getElementById('card-magic').classList.remove('selected');
+      document.getElementById('card-codes').classList.remove('selected');
+      document.getElementById('card-' + method).classList.add('selected');
+    }
+
+    function continueToNext() {
+      if (selectedMethod === 'magic') {
+        document.getElementById('emailPopup').style.display = 'flex';
+      } else {
+        showRecoveryCodes();
+      }
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function sendLink() {
+      const email = document.getElementById('recoveryEmail').value.trim();
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      alert('Secure magic link sent to ' + email);
+      window.location.href = 'home.html';
+    }
+
+    function showRecoveryCodes() {
+      const codes = generateRecoveryCodes(10);
+      const list = document.getElementById('codesList');
+      list.innerHTML = '';
+      codes.forEach(code => {
+        const li = document.createElement('li');
+        li.textContent = code;
+        list.appendChild(li);
+      });
+      document.getElementById('codesPopup').style.display = 'flex';
+    }
+
+    function generateRecoveryCodes(count) {
+      const codes = [];
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      for (let i = 0; i < count; i++) {
+        let code = '';
+        for (let j = 0; j < 8; j++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        codes.push(code);
+      }
+      return codes;
+    }
+  </script>
+</body>
+</html>
+

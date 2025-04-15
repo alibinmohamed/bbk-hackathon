@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Set Up Your BBK-SK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Set Up Your BBkey</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -14,40 +13,52 @@
     }
 
     body {
-      background-color: #5f42a3;
+      background-color: #0e1b3d;
       font-family: 'Segoe UI', sans-serif;
       color: #ffffff;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 2rem;
       min-height: 100vh;
     }
 
     .container {
-      background-color: #6f50c7;
+      background-color: #152a53;
       width: 100%;
       max-width: 600px;
       padding: 2rem;
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
     }
 
     h2 {
       text-align: center;
-      font-size: 28px;
+      font-size: 24px;
       margin-bottom: 1rem;
+      color: #80bfff;
     }
 
     p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
       text-align: center;
+      color: #cfd8e6;
+      margin-bottom: 1rem;
     }
 
     ol {
       margin-left: 1.5rem;
+      color: #d8e0f2;
       margin-bottom: 2rem;
     }
 
@@ -67,28 +78,29 @@
       border: none;
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      background-color: #f5f4fc;
-      color: #5f42a3;
+      background-color: #1d335c;
+      color: #ffffff;
     }
 
     input::placeholder {
-      color: #aaa;
+      color: #a0aec0;
     }
 
     button {
-      background-color: #ffffff;
-      color: #5f42a3;
+      background-color: #3a6ae0;
+      color: white;
       font-weight: bold;
       padding: 0.75rem;
       border: none;
       border-radius: 12px;
       cursor: pointer;
       margin-top: 0.75rem;
+      font-size: 1rem;
       transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #e4e2fb;
+      background-color: #598bf7;
     }
 
     .nav-buttons {
@@ -105,20 +117,42 @@
 </head>
 <body>
   <div class="container">
-    <h2><i class="fas fa-key"></i> Set Up Your BBK-SK</h2>
+    <div class="header">
+      <div class="logo">
+        <a href="home.html"><img src="bbkklogo.png" alt="BBK Logo" height="60"></a>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-key"></i> Set Up Your BBkey</h2>
     <p>Follow the instructions below to configure your BBK Security Key:</p>
     <ol>
       <li>Select a secure PIN for your key.</li>
       <li>Plug in your key (USB) or place it near your device (NFC).</li>
     </ol>
-    <form onsubmit="event.preventDefault(); alert('Security Key setup completed successfully!');">
+
+    <form id="pin-form">
       <label for="pin">Choose a PIN</label>
       <input type="password" id="pin" placeholder="4 to 8 digit PIN" minlength="4" maxlength="8" required>
       <button type="submit">Set Up Key</button>
     </form>
+
     <div class="nav-buttons">
-      <button onclick="location.href='track-order.html'"><i class="fas fa-box"></i> Recovery Methods</button>
+      <button onclick="location.href='recovery.html'"><i class="fas fa-box"></i> Recovery Methods</button>
     </div>
   </div>
+
+  <script>
+    document.getElementById("pin-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const pin = document.getElementById("pin").value.trim();
+
+      if (pin.length >= 4 && pin.length <= 8) {
+        alert("Security Key setup completed successfully!");
+        window.location.href = "home.html";
+      } else {
+        alert("Please enter a PIN between 4 and 8 digits.");
+      }
+    });
+  </script>
 </body>
 </html>

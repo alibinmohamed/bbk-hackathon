@@ -4,15 +4,157 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up - BBK Security Key</title>
-  <link rel="stylesheet" href="Css/Regestration.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #152a53;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .main-section h1 {
+      text-align: center;
+      color: #80bfff;
+      margin-bottom: 0.5rem;
+    }
+
+    .main-section p {
+      text-align: center;
+      color: #cfd8e6;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      background-color: #1d335c;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    .btn.signup {
+      width: 100%;
+      background-color: #3a6ae0;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn.signup:hover {
+      background-color: #598bf7;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #1d335c;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 500px;
+      color: white;
+    }
+
+    .modal-content h2 {
+      color: #80bfff;
+    }
+
+    .modal-actions {
+      margin-top: 1.5rem;
+      text-align: right;
+    }
+
+    .modal-actions button {
+      background-color: #3a6ae0;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      border: none;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+
+    .modal-actions button.cancel {
+      background-color: #999;
+    }
+
+    ul.recovery-list {
+      margin-top: 1rem;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    ul.recovery-list li {
+      margin-bottom: 0.5rem;
+      color: #d9e6ff;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">✺</span>
-        <a class="logo-text" href="index.html">BBK</a>
+        <a href="index.html">
+          <img src="bbkklogo.png" alt="BBK Logo" />
+        </a>
       </div>
     </header>
 
@@ -20,94 +162,85 @@
       <h1>Create Your Account</h1>
       <p>Please fill in your details to continue</p>
 
-      <form class="signup-form">
+      <form class="signup-form" onsubmit="event.preventDefault(); document.getElementById('photo-step').style.display='flex';">
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" placeholder="Enter your full name" required>
         </div>
-      
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="Enter your email" required>
         </div>
-      
         <div class="form-group">
           <label for="phone">Phone Number</label>
           <input type="text" id="phone" placeholder="Enter your phone number" required>
         </div>
-      
         <div class="form-group">
           <label for="cpr">CPR Number</label>
           <input type="text" id="cpr" placeholder="Enter your CPR number" required>
         </div>
-      
         <div class="form-group">
           <label for="address">Home Address</label>
           <input type="text" id="address" placeholder="Enter your home address" required>
         </div>
-      
         <button type="submit" class="btn signup">Next</button>
       </form>
     </main>
   </div>
-  
 
-  <!-- Step: Upload Verification Photos -->
-  <div id="photo-step" class="modal hidden">
+  <!-- Identity Photo Step -->
+  <div id="photo-step" class="modal">
     <div class="modal-content">
       <h2>Identity Verification</h2>
       <p id="photo-instruction">Please take a photo of the <strong>front of your ID</strong>.</p>
-      tion">Please take a photo of the <strong>f
       <video id="camera" autoplay playsinline style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"></video>
       <canvas id="snapshot" style="display: none;"></canvas>
-  
       <button type="button" id="take-photo" class="btn">Take Photo</button>
-      <p id="photo-status" style="font-size: 0.9rem; color: #3c347c; margin: 0.5rem 0;"></p>
-  
+      <p id="photo-status" style="font-size: 0.9rem; color: #80bfff; margin: 0.5rem 0;"></p>
       <div class="modal-actions">
-        <button id="continue-to-otb" class="btn" disabled>Continue</button>
+        <button id="continue-to-otb" class="btn" disabled onclick="document.getElementById('photo-step').style.display='none';document.getElementById('otb-modal').style.display='flex';">Continue</button>
       </div>
     </div>
   </div>
-  
 
-
-  <!-- Modal for Fake OTB -->
-<div id="otb-modal" class="modal hidden">
-  <div class="modal-content">
-    <p>We have sent a message to your private email. Please click yes to send the code to your phone so you can insert it here.</p>
-    <input type="text" id="otb-code" placeholder="Enter code here (e.g. 0000)" />
-    <div class="modal-actions">
-      <button id="submit-otb" class="btn" disabled>Submit</button>
-      <button id="cancel-otb" class="btn cancel">Cancel</button>
+  <!-- OTB Modal -->
+  <div id="otb-modal" class="modal">
+    <div class="modal-content">
+      <p>We have sent a message to your private email. Please click yes to send the code to your phone so you can insert it here.</p>
+      <input type="text" id="otb-code" placeholder="Enter code here (e.g. 0000)" />
+      <div class="modal-actions">
+        <button id="submit-otb" class="btn" onclick="window.location.href='security-key.html';">Submit</button>
+        <button id="cancel-otb" class="btn cancel" onclick="document.getElementById('otb-modal').style.display='none';">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!--Recovery Keys Modal-->
-<div id="recovery-modal" class="modal hidden">
-  <div class="modal-content">
-    <h2>Recovery Keys</h2>
-    <p>Save these recovery keys in a secure place. you can use them to regain access if you lose your Security key:</p>
-    <ul class="recovery-list">
-      <li>7HD9-JK4L-QP2Z</li>
-      <li>92AK-33BL-ZTY7</li>
-      <li>L8PQ-KL2Z-WX51</li>
-      <li>0ZXQ-PPA3-KT77</li>
-      <li>U14T-XCMZ-28BJ</li>
-      <li>W7MN-29ZT-AQ33</li>
-      <li>MQ92-VK28-ZYXX</li>
-      <li>ZLX0-19PT-RY6M</li>
-      <li>NXQ2-AOL4-8Z92</li>
-      <li>KP78-LB29-XPZT</li>
-    </ul>
+  <script>
+    const camera = document.getElementById("camera");
+    const snapshotCanvas = document.getElementById("snapshot");
+    const snapshotContext = snapshotCanvas.getContext("2d");
+    const takePhotoButton = document.getElementById("take-photo");
+    const continueBtn = document.getElementById("continue-to-otb");
+    const photoStatus = document.getElementById("photo-status");
 
-    <div class="modal-actions">
-      <button class="btn" onclick="window.location.href='security-key.html'">Finish</button>
-    </div>
-  </div>
-</div>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        camera.srcObject = stream;
+      })
+      .catch((error) => {
+        console.error('Camera access error:', error);
+        photoStatus.textContent = "Unable to access the camera.";
+      });
 
-  <script src="./javascript/regestration.js"></script>
+    takePhotoButton.addEventListener('click', () => {
+      snapshotCanvas.width = camera.videoWidth;
+      snapshotCanvas.height = camera.videoHeight;
+      snapshotContext.drawImage(camera, 0, 0, camera.videoWidth, camera.videoHeight);
+      photoStatus.textContent = "Photo captured successfully!";
+      continueBtn.disabled = false;
+    });
+  </script>
 </body>
+</html>
+
 </html>

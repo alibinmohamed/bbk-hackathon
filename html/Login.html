@@ -4,15 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - BBK Security Key</title>
-  <link rel="stylesheet" href="Css/Regestration.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #152a53;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .main-section h1 {
+      text-align: center;
+      color: #80bfff;
+      margin-bottom: 0.5rem;
+    }
+
+    .main-section p {
+      text-align: center;
+      color: #cfd8e6;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      background-color: #1d335c;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    input::placeholder,
+    select:invalid {
+      color: #aaa;
+    }
+
+    .btn.signup {
+      width: 100%;
+      background-color: #3a6ae0;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn.signup:hover {
+      background-color: #598bf7;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23ccc" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 8px 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">✺</span>
-        <a class="logo-text" href="index.html">BBK</a>
+        <a href="index.html">
+          <img src="bbkklogo.png" alt="BBK Logo">
+        </a>
       </div>
     </header>
 

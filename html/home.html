@@ -4,26 +4,144 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BBK Home</title>
-  <link rel="stylesheet" href="Css/home.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <script src="javascript/home.js" defer></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: #152a53;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .btn.logout {
+      background-color: #3a6ae0;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn.logout:hover {
+      background-color: #598bf7;
+    }
+
+    .main-section h1 {
+      text-align: center;
+      color: #80bfff;
+      margin-bottom: 0.5rem;
+    }
+
+    .main-section p {
+      text-align: center;
+      color: #cfd8e6;
+      margin-bottom: 2rem;
+    }
+
+    .summary-section {
+      background-color: #1d335c;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .summary-section h2 {
+      color: #80bfff;
+      margin-bottom: 1rem;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .action-card {
+      background-color: #1d335c;
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s, background-color 0.3s;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-card:hover {
+      transform: translateY(-5px);
+      background-color: #274777;
+    }
+
+    .action-card .icon {
+      font-size: 2rem;
+      color: #80bfff;
+      margin-bottom: 1rem;
+    }
+
+    .action-card h3 {
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .action-card p {
+      color: #cfd8e6;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">✺</span>
-        <span class="logo-text">BBK</span>
+        <img src="bbkklogo.png" alt="BBK Logo" />
       </div>
-      <div class="user-info">
-        <span>Welcome to BBK</span>
-        <button class="btn logout" onclick="window.location.href='index.html'">Logout</button>
-      </div>
+      <button class="btn logout" onclick="window.location.href='index.html'">Logout</button>
     </header>
 
     <main class="main-section">
       <h1>HOME</h1>
       <p>Select an action to get started with your account.</p>
+
+      <section class="summary-section">
+        <h2>Account Summary</h2>
+        <p>Total Balance: <strong>***,*** USD</strong></p>
+        <p>Last login: April 14, 2025</p>
+      </section>
 
       <section class="actions-grid">
         <div class="action-card" onclick="window.location.href='track-order.html'">
@@ -31,7 +149,7 @@
           <h3>Track Order</h3>
           <p>Follow your chip orders in real-time. or order another chip</p>
         </div>
-        <div class="action-card">
+        <div class="action-card" onclick="window.location.href='send-money.html'">
           <i class="fas fa-paper-plane icon"></i>
           <h3>Send Money</h3>
           <p>Transfer money securely to any bank.</p>
@@ -41,115 +159,13 @@
           <h3>Withdraw</h3>
           <p>Withdraw funds from your BBK account.</p>
         </div>
-        <div class="action-card" id="settings">
+        <div class="action-card" onclick="window.location.href='security-setting.html'">
           <i class="fas fa-cog icon"></i>
           <h3>Settings</h3>
           <p>Manage your preferences and security.</p>
         </div>
       </section>
-
-      <section class="summary-section">
-        <h2>Account Summary</h2>
-        <p>Total Balance: <strong>***,*** USD</strong></p>
-        <p>Last login: April 14, 2025</p>
-      </section>
     </main>
-  </div>
-
-  <!-- Settings Main Popup -->
-  <div class="popup-overlay" id="settingsPopup">
-    <div class="popup">
-      <button class="close-btn" onclick="closePopup('settingsPopup')">&times;</button>
-      <h2>Settings</h2>
-      <div class="popup-card" onclick="openPopup('securityPopup')">
-        <i class="fas fa-shield-alt icon"></i>
-        <h3>Security Settings</h3>
-      </div>
-      <div class="popup-card" onclick="openPopup('loginPopup')">
-        <i class="fas fa-fingerprint icon"></i>
-        <h3>Add Other Ways to Login</h3>
-      </div>
-    </div>
-  </div>
-
-  <!-- Security Settings Popup -->
-  <div class="popup-overlay" id="securityPopup">
-    <div class="popup">
-      <button class="close-btn" onclick="closePopup('securityPopup')">&times;</button>
-      <h2>Adjustable Authentication Triggers</h2>
-
-      <div class="setting-item">
-        <label>Choose Security Level:</label>
-        <div class="security-options">
-          <label><input type="radio" name="securityLevel" value="high"> Least Security</label>
-          <label><input type="radio" name="securityLevel" value="medium"> Medium Security</label>
-          <label><input type="radio" name="securityLevel" value="least"> Highest Security</label>
-        </div>
-      </div>
-
-      <div class="setting-item">
-        <label>Max Single Transaction Amount (USD)</label>
-        <input type="range" min="0" max="10000" step="100" value="1000">
-      </div>
-
-      <div class="setting-item">
-        <label>Max Daily Transaction Amount (times)</label>
-        <input type="range" min="1" max="20" step="1" value="20">
-      </div>
-
-      <div class="setting-item">
-        <label>Max Distance from Home (km)</label>
-        <input type="range" min="0" max="1000" step="10" value="100">
-      </div>
-
-      <div class="setting-item">
-        <label>Whitelist IP Addresses (comma-separated)</label>
-        <input type="text" placeholder="e.g., 192.168.1.1, 10.0.0.2">
-      </div>
-
-      <div class="setting-item">
-        <label>Whitelist MAC Addresses (comma-separated)</label>
-        <input type="text" placeholder="e.g., AA:BB:CC:DD:EE:FF">
-      </div>
-
-      <button class="btn action" onclick="goHome()">Apply</button>
-    </div>
-  </div>
-
-  <!-- Login Options Popup -->
-  <div class="popup-overlay" id="loginPopup">
-    <div class="popup">
-      <button class="close-btn" onclick="closePopup('loginPopup')">&times;</button>
-      <h2>Add Login Methods</h2>
-
-      <div class="popup-card" onclick="showInfo('Biometric method (Fingerprint/Face ID) added successfully.')">
-        <i class="fas fa-fingerprint icon"></i>
-        <h3>Biometric</h3>
-        <p>Enabled (Hardcoded)</p>
-      </div>
-
-      <div class="popup-card">
-        <i class="fas fa-key icon"></i>
-        <h3>PIN</h3>
-        <p>Set a numeric PIN for quick login</p>
-      </div>
-
-      <div class="popup-card">
-        <i class="fas fa-lock icon"></i>
-        <h3>Code</h3>
-        <p>Set a custom login code (numbers & letters)</p>
-      </div>
-
-      <button class="btn action" onclick="goHome()">Apply</button>
-    </div>
-  </div>
-
-  <!-- Generic Info Popup -->
-  <div class="popup-overlay" id="infoPopup">
-    <div class="popup small">
-      <button class="close-btn" onclick="closePopup('infoPopup')">&times;</button>
-      <h3 id="infoPopupText">Message Here</h3>
-    </div>
   </div>
 </body>
 </html>

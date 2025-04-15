@@ -4,20 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Track Your Order</title>
-  <link rel="stylesheet" href="Css/home.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #152a53;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      height: 150px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .btn.logout {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .main-section h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #80bfff;
+    }
+
+    .order-details, .status {
+      background-color: #1d335c;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .order-details p, .status p {
+      margin-bottom: 0.75rem;
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .order-details .value, .status .value {
+      color: #cfe4ff;
+    }
+
+    .status.pending {
+      border-left: 5px solid #f1c40f;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .btn.action {
+      flex: 1;
+      background-color: #3a6ae0;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn.action:hover {
+      background-color: #598bf7;
+    }
+
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">✺</span>
-        <a class="logo-text" href="home.html">BBK</a>
+        <a href="home.html">
+          <img src="bbkklogo.png" alt="BBK Logo" />
+        </a>
       </div>
-      <div class="user-info">
-        <span>Welcome to BBK</span>
-        <button class="btn logout">Logout</button>
-      </div>
+      <button class="btn logout" onclick="window.location.href='index.html'">Logout</button>
     </header>
 
     <main class="main-section">
@@ -37,7 +135,7 @@
       
       <div class="button-group">
         <button class="btn action" onclick="location.href='security-key.html'">Back to Key Selection</button>
-        <button class="btn action" onclick="location.href='setup.html'">Set Up BBK-SK</button>
+        <button class="btn action" onclick="location.href='setup.html'">Set Up BBKey</button>
       </div>
     </main>
   </div>

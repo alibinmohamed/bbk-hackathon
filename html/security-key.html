@@ -4,15 +4,102 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Order Security Key - BBK</title>
-  <link rel="stylesheet" href="Css/security-key.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0e1b3d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #152a53;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      height: 150px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    h1 {
+      text-align: center;
+      color: #80bfff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      text-align: center;
+      color: #cfd8e6;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      background-color: #1d335c;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    select option, input::placeholder {
+      color: #aaa;
+    }
+
+    .btn.signup {
+      width: 100%;
+      background-color: #3a6ae0;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn.signup:hover {
+      background-color: #598bf7;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">✺</span>
-        <a class="logo-text" style="text-decoration: none;" href="index.html">BBK</a>
+        <a href="index.html"><img src="bbkklogo.png" alt="BBK Logo" /></a>
       </div>
     </header>
 
@@ -20,7 +107,7 @@
       <h1>Order Your BBK Security Key</h1>
       <p>Select your preferences to enhance your account protection</p>
 
-      <form class="key-form">
+      <form class="key-form" onsubmit="event.preventDefault(); window.location.href='track-order.html';">
         <div class="form-group">
           <label for="key-type">Key Type</label>
           <select id="key-type" required>
@@ -28,7 +115,6 @@
             <option value="usb-a">USB-A</option>
             <option value="usb-c">USB-C</option>
             <option value="nfc">NFC</option>
-            <option value="bluetooth">Bluetooth</option>
           </select>
         </div>
 
@@ -48,7 +134,7 @@
           <input type="number" id="count" min="1" max="10" placeholder="Enter quantity" required />
         </div>
 
-        <button type="submit" class="btn signup" onclick="window.location.href='home.html'">Order Key</button>
+        <button type="submit" class="btn signup">Order Key</button>
       </form>
     </main>
   </div>
